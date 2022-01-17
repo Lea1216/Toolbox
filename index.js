@@ -8,7 +8,7 @@
         marginleft=185;
 
         //Read the data
-        d3.csv("https://raw.githubusercontent.com/Lea1216/MasterThesis/main/heatmap_update.csv", function(data) {
+        d3.csv("https://raw.githubusercontent.com/Lea1216/MasterThesis/main/heatmap_tooltiptest.csv", function(data) {
 
           var axis = d3.select("#my_dataviz")
        .append("svg")
@@ -16,7 +16,6 @@
        .attr("height",margintop +1)
        .append("g")
        .attr("transform", "translate(" + marginleft + ", " + margintop + ")");
-
 
 
                   // append the svg object to the body of the page
@@ -80,28 +79,11 @@
             .append("div")
             .style("opacity", 0)
             .attr("class", "tooltip")
-            .style("padding", "7px")
-            .attr("class","tooltip")
 
-          var tooltip2 = d3.select("#imgcol")
-              .append("div")
-              .style("opacity", 0)
-              .attr("class", "tooltip")
-              .attr("class","tooltip")
-
-          var tooltip3 = d3.select("#imgcol")
-              .append("div")
-              .style("opacity", 0)
-              .attr("class", "tooltip")
-              .style("background-color", "white")
-              .style("border-radius", "5px")
-              .style("padding", "5px")
-              .attr("class","tooltip")
 
         // Three function that change the tooltip when user hover / move / leave a cell
         var mouseover = function(d) {
           tooltip.style("opacity", 1)
-          tooltip2.style("opacity", 1)
           d3.select(this)
             .style("opacity", 1)
         }
@@ -109,8 +91,40 @@
 
         var mousemove = function(d) {
           tooltip
-            .html("<img src=" + d.card + " class=image>")
-        }
+    .html("<div class=" + "cardhead" + ">"
+    +"<h6>"+d.activity+"</h6>"
+    // +"<img src=" + "explore.png" + " class=" + "explore" + ">"
+    +"</div>"
+      + "<div class=" + "card" + ">"
+      +"<div>"
+      + "<div class=" + "activitydescription" + ">"
+      +"<p class="+ "activitydescriptiontext"+ ">"+d.description+"</p>"
+      +"</div>"
+    +"</div>"
+    // +"<div>"
+    // +"<p class=" + " fas fa-star" + "></p>"
+    // +"</div>"
+      +"<div class="+ "row"+ ">"
+      +"<div class=" + "col" + ">"
+        +"<p class="+ "cardcategory"+ ">Group Size</p>"
+        +"<p class="+ "cardcategory"+ ">Timeframe</p>"
+        +"<p class="+ "cardcategory"+ ">Method</p>"
+        +"<p class="+ "cardcategory"+ ">Facilitation Level</p>"
+        +"<p class="+ "cardcategory"+ ">Contributes to</p>"
+      +"</div>"
+      +"<div class=" + "col" + ">"
+        +"<p class="+ "cardvalue"+ ">"+d.groupsize+"</p>"
+        +"<p class="+ "cardvalue"+ ">"+d.timeframe+"</p>"
+        +"<p class="+ "cardvalue"+ ">"+d.method+"</p>"
+        +"<p class="+ "cardvalue"+ ">"+d.facilitation+"</p>"
+        +"<p class="+ "cardvalue"+ ">"+d.contribution+"</p>"
+      +"</div>"
+      +"</div>"
+      +"<div>"
+        +"<a href=" + d.url + ">click for more information</a>"
+      +"</div>"
+      )
+  }
 
         var mouseover_y = function(d) {
           tooltip.style("opacity", 1)
@@ -118,8 +132,45 @@
 
         var mousemove_y = function(d,i) {
           tooltip
-            .html("<img src=" + data[i].card + " class=image>")
-        }
+          .html("<div class=" + "cardhead" + ">"
+          +"<h6>"+d.activity+"</h6>"
+          // +"<img src=" + "explore.png" + " class=" + "explore" + ">"
+          +"</div>"
+          + "<div class=" + "card" + ">"
+          +"<div>"
+          + "<div class=" + "activitydescription" + ">"
+          +"<p class="+ "activitydescriptiontext"+ ">"+d.description+"</p>"
+          +"</div>"
+          +"</div>"
+          // +"<div>"
+          // +"<p class=" + " fas fa-star" + "></p>"
+          // +"</div>"
+          +"<div class="+ "row"+ ">"
+          +"<div class=" + "col" + ">"
+          +"<p class="+ "cardcategory"+ ">Group Size</p>"
+          +"<p class="+ "cardcategory"+ ">Timeframe</p>"
+          +"<p class="+ "cardcategory"+ ">Method</p>"
+          +"<p class="+ "cardcategory"+ ">Facilitation Level</p>"
+          +"<p class="+ "cardcategory"+ ">Contributes to</p>"
+          +"</div>"
+          +"<div class=" + "col" + ">"
+          +"<p class="+ "cardvalue"+ ">"+d.groupsize+"</p>"
+          +"<p class="+ "cardvalue"+ ">"+d.timeframe+"</p>"
+          +"<p class="+ "cardvalue"+ ">"+d.method+"</p>"
+          +"<p class="+ "cardvalue"+ ">"+d.facilitation+"</p>"
+          +"<p class="+ "cardvalue"+ ">"+d.contribution+"</p>"
+          +"</div>"
+          +"</div>"
+          +"<div>"
+          +"<a href=" + d.url + ">click for more information</a>"
+          +"</div>"
+          )
+  }
+
+        // var mousemove_y = function(d,i) {
+        //   tooltip
+        //     .html("<img src=" + data[i].card + " class=image>")
+        // }
 
         click_yaxis.on("mouseover", mouseover_y)
                   .on("mousemove", mousemove_y)
