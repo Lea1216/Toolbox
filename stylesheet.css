@@ -152,6 +152,57 @@ h6 {
 
 .tooltip {
     top:80px;
+    height:444px;
+    width:300px;
+    background-image: url("background.png");
+    background-color: #3e989a;
+}
+
+.card {
+  background-color: #bedcdd;
+  color: #3e989a;
+  width:90%;
+  height: 344px;
+  text-align: center;
+  margin: auto;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.cardhead {
+  background-color: #3e989a;
+  color: white;
+  width: 90%;
+  text-align: center;
+  margin: auto;
+  margin-top: 20px;
+  height: 80px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+/* .explore {
+  width: 30%;
+} */
+
+.cardvalue {
+  font-weight: bold;
+  color:#644380;
+  margin-right: 5px;
+  text-align: right;
+}
+
+.cardcategory {
+  text-align: left;
+  margin-left: 5px;
+}
+
+.activitydescription {
+  height: 110px;
+}
+
+.activitydescriptiontext {
+  margin: auto auto;
 }
 
 .y_axis {
